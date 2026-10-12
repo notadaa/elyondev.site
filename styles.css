@@ -40,7 +40,7 @@ nav ul a:not(.btn):hover::after{transform:scaleX(1)}
 /* hero */
 .hero{position:relative;isolation:isolate;overflow:hidden;color:#fff;padding:0;min-height:calc(100vh - 68px);display:flex;align-items:center}
 .hero::before{content:"";position:absolute;inset:0;z-index:-1;
-  background:linear-gradient(105deg,rgba(6,14,23,.94) 30%,rgba(6,14,23,.55)),url("images/hero.jpg") center/cover;
+  background:linear-gradient(105deg,rgba(6,14,23,.94) 30%,rgba(6,14,23,.55)),url("photos/hero.jpg") center/cover;
   animation:kenburns 24s ease-out forwards}
 @keyframes kenburns{from{transform:scale(1.12)}to{transform:scale(1)}}
 @keyframes rise{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:none}}
