@@ -13,7 +13,7 @@ if(window.SITE){
 }
 // render project cards from projects-data.js
 function card(p,label,done){
-  const img=p.image?`<img src="${esc(p.image)}" alt="${esc(p.name)}" loading="lazy">`:`<div class="pimg ph" style="position:absolute;inset:0"><img src="logo.png" alt=""></div>`;
+  const img=p.image?`<img src="${esc(p.image)}" alt="${esc(p.name)}" loading="lazy">`:`<div class="pimg ph" style="position:absolute;inset:0"><img src="photos/logo.png" alt=""></div>`;
   return `<article class="pcard reveal"><div class="pimg">${img}<span class="badge${done?" done":""}">${label}</span></div>
     <div class="pbody"><span class="ploc">${esc(p.location)}</span><h3>${esc(p.name)}</h3><p>${esc(p.description)}</p></div></article>`;
 }
@@ -23,9 +23,9 @@ if(window.PROJECTS){
   fill("completed-projects",PROJECTS.completed,"Completed",true);
 }
 const reduce=matchMedia("(prefers-reduced-motion:reduce)").matches;
-// stagger siblings; toggle on enter/leave so animations replay on every scroll
+// stagger siblings; reveal once (toggling on enter/leave made items flicker at the edge)
 document.querySelectorAll(".grid,.proj-grid,.checks").forEach(g=>[...g.children].forEach((c,i)=>c.style.transitionDelay=i*90+"ms"));
-const io=new IntersectionObserver(es=>es.forEach(e=>e.target.classList.toggle("in",e.isIntersecting)),{threshold:.12,rootMargin:"0px 0px -6% 0px"});
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target)}}),{threshold:.01,rootMargin:"0px 0px -6% 0px"});
 document.querySelectorAll(".reveal").forEach(el=>io.observe(el));
 const raf=new WeakMap();
 function count(el){
@@ -41,4 +41,4 @@ new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.querySe
 
 // hide the nav on scroll down, show on scroll up
 {const h=document.querySelector("header");let last=scrollY;
-addEventListener("scroll",()=>{const y=scrollY;h.classList.toggle("hide",y>last&&y>120);last=y},{passive:true});}
+addEventListener("scroll",()=>{const y=scrollY;if(Math.abs(y-last)<8)return;h.classList.toggle("hide",y>last&&y>120);last=y},{passive:true});}
