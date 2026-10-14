@@ -40,7 +40,8 @@ nav ul a:not(.btn):hover::after{transform:scaleX(1)}
 /* hero */
 .hero{position:relative;isolation:isolate;overflow:hidden;color:#fff;padding:0;min-height:calc(100vh - 68px);display:flex;align-items:center}
 .hero::before{content:"";position:absolute;inset:0;z-index:-1;
-  background:linear-gradient(105deg,rgba(6,14,23,.94) 30%,rgba(6,14,23,.55)),url("photos/hero.jpg") center/cover;
+  background:linear-gradient(105deg,rgba(6,14,23,.94) 30%,rgba(6,14,23,.55))};
+.hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;
   animation:kenburns 24s ease-out forwards}
 @keyframes kenburns{from{transform:scale(1.12)}to{transform:scale(1)}}
 @keyframes rise{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:none}}
@@ -160,3 +161,8 @@ footer img{height:72px;width:auto}
   *,*::before,*::after{animation:none!important;transition:none!important}
   .js .reveal{opacity:1;transform:none}
 }
+
+.hero{isolation:isolate}
+.hero-video{z-index:0}
+.hero::before{z-index:1}
+.hero .wrap{position:relative;z-index:2}
