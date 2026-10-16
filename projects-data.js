@@ -11,7 +11,7 @@ window.PROJECTS = {
       name: "Landmark at Arlington",
       location: "Arlington, TX",
       description: "10 building townhome community delivered as a full ground-up build.",
-      image: "photos/landmark.jpg"   // e.g. "photos/current-1.jpg" (leave "" for a placeholder)
+      image: "photos/landmark-arlington.jpg"   // e.g. "photos/current-1.jpg" (leave "" for a placeholder)
     },
     {
       name: "380 Villas",
