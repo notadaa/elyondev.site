@@ -13,7 +13,7 @@ if(window.SITE){
 }
 // render project cards from projects-data.js
 function card(p,label,done){
-  const img=p.image?`<img src="${esc(p.image)}" alt="${esc(p.name)}" loading="lazy">`:`<div class="pimg ph" style="position:absolute;inset:0"><img src="photos/logo.png" alt=""></div>`;
+  const img=p.image?`<img src="${esc(p.image)}" alt="${esc(p.name)}" loading="lazy">`:`<div class="pimg ph" style="position:absolute;inset:0"><img src="photos/logo_white_text.png" alt=""></div>`;
   return `<article class="pcard reveal"><div class="pimg">${img}<span class="badge${done?" done":""}">${label}</span></div>
     <div class="pbody"><span class="ploc">${esc(p.location)}</span><h3>${esc(p.name)}</h3><p>${esc(p.description)}</p></div></article>`;
 }
